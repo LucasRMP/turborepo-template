@@ -1,0 +1,40 @@
+{
+  "name": "turbo-app",
+  "version": "0.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "packageManager": "yarn@1.22.19",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "lint": "turbo run lint",
+    "prepare": "husky install",
+    "test": "turbo run test"
+  },
+  "devDependencies": {
+    "eslint-config-custom": "*",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.0",
+    "prettier": "latest",
+    "turbo": "latest"
+  },
+  "dependencies": {},
+  "lint-staged": {
+    "apps/**/*.{ts,tsx,md}": [
+      "eslint --fix"
+    ],
+    "packages/ui/**/*.{ts,tsx,md}": [
+      "eslint --fix"
+    ],
+    "*.json": [
+      "prettier --write"
+    ]
+  }
+}
